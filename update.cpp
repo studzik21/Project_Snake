@@ -4,7 +4,7 @@
 #include "engine.h"
 
 void Engine::update() {
-    if(timeSinceLastMove.asSeconds()>=seconds(1.f / speed).asSeconds()){
+    if(timeSinceLastMove.asSeconds()>=seconds(1.f / (speed * (turbo? 2 : 1))).asSeconds()){
         Vector2f currentPos = snake[0].getPosition();
         Vector2f lastPos= currentPos;
 

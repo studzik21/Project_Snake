@@ -7,7 +7,7 @@
 Engine::Engine(){
     window.create(VideoMode(800,600),"Snake",Style::Default);
     window.setFramerateLimit(60);
-    font.loadFromFile("E:\\Users\\Patryk\\CLionProjects\\snake\\arial.ttf");
+    font.loadFromFile("../arial.ttf");
 
     title.setString("S n a k e");
     title.setFont(font);
@@ -41,7 +41,6 @@ void Engine::run() {
             input();
         }
         else {
-
             input();
             update();
             draw();
@@ -59,31 +58,9 @@ void Engine::draw() {
     window.draw(scoreText);
 
     if(state==State::running) {
-//        for (auto &s : snake) {
-//            window.draw(s.getShape());
-//        }
-
-        Vector2f pos_h = snake[0].getPosition();
-
-        if(dir==direction::right) {
-            head.setPosition(pos_h.x - 10, pos_h.y);
-
+        for (auto &s : snake) {
+            window.draw(s.getShape());
         }
-        else if(dir==direction::left) {
-            head.setPosition(pos_h.x + 10, pos_h.y);
-
-        }
-        else if(dir==direction::up) {
-            head.setPosition(pos_h.x, pos_h.y + 10);
-
-        }
-        else if(dir==direction::down) {
-            head.setPosition(pos_h.x, pos_h.y - 10);
-
-        }
-        window.draw(head);
-        for(int i=1;i<snake.size();i++)
-            window.draw(snake[i].getShape());
 
         window.draw(eat.getField());
 
@@ -161,8 +138,14 @@ void Engine::input() {
             if(Keyboard::isKeyPressed(Keyboard::Enter)){
                 startGame();
             }
+            if(Keyboard::isKeyPressed(Keyboard::LShift)){
+                turbo= !turbo;
+            }
+
 
         }
+
+
 
     }
 

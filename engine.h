@@ -12,6 +12,7 @@
 #include <deque>
 #include "Snake.h"
 #include "Eat.h"
+#include <iostream>
 
 using namespace sf;
 using namespace std;
@@ -36,6 +37,7 @@ class Engine {
     bool add=false;
     State state;
     float speed;
+    bool turbo=false;
     int score;
 
     Font font;
